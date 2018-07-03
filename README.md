@@ -1,5 +1,3 @@
-# Proper
-proper project dimensions
 ##########################
 # PART 1: Code
 ##########################
@@ -201,8 +199,9 @@ def Qmatrix(matrix):
       projs = vecSub(proj8,vecSub(proj7,vecSub(proj6,vecSub(proj5,vecSub(proj4,vecSub(proj3,vecSub(proj2,proj1)))))))
       X[i] = vecSub(V[i],projs)
   #print(X)
-  #Q = MatrixTranspose(X)
+  
   Q = normilzeMatrix(X)
+  Q = MatrixTranspose(Q)
    
   return Q
    
@@ -215,8 +214,8 @@ print(Q)
 def Rmatrix(Q,A):
   Qt = MatrixTranspose(Q)
   At = MatrixTranspose(A)
-  R = matmatmult(At,Qt)
-  R= MatrixTranspose(R)
+  R = matmatmult(Qt,A)
+  
   return R
 
 R=Rmatrix(Q,A) 
@@ -227,3 +226,28 @@ for i in range(len(R)):
   for j in range(len(R[0])):
     Rrounded[i][j]=round(R[i][j],4)
 print(Rrounded)
+##########################
+# PART 1: Question 3
+##########################
+print('-----------------------')
+y= datay
+def qttimesy(Q,y):
+  Qt=MatrixTranspose(Q)
+  qy=[]
+  for i in range(len(Qt)):
+    rows=0
+    for j in range(len(Qt[0])):
+      rows+=(Qt[i][j]*y[j])
+    qy.append(rows)
+  return qy
+qy=qttimesy(Q,y)
+print('Orthanormal Matrix Q Transposed multiplied by the Data vector y= Qt*y=')
+print(qy)
+
+##########################
+# PART 1: Question 4
+##########################
+print('-----------------------')
+def solveC(Q,R,y):
+  
+  return None
